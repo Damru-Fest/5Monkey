@@ -1,216 +1,166 @@
-"use client";
-import { useState, useEffect } from "react";
-import menuData from "../data/menu.json";
-import drinksMenu from "../../src/drinksMenu.json";
-import dessertsMenu from "../../src/dessertsMenu.json";
-import { useSearchParams } from "next/navigation";
-// Removed unused HTMLFlipBook import
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Image from "next/image"
+import menuData from "../../src/menuData.json"
 
 export default function Menu() {
-  useEffect(() => {
-    AOS.init({
-      // Global settings:
-      disable: false,
-      startEvent: 'DOMContentLoaded',
-      initClassName: 'aos-init',
-      animatedClassName: 'aos-animate',
-      useClassNames: false,
-      disableMutationObserver: false,
-      debounceDelay: 50,
-      throttleDelay: 99,
-      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-      offset: 120,
-      delay: 0,
-      duration: 1000,
-      easing: 'ease',
-      once: false,
-      mirror: false,
-      anchorPlacement: 'top-bottom',
-    });
-  }, []);
-  const categories = menuData.menu.categories;
-  const searchParams = useSearchParams();
-  const sectionType = searchParams.get("type");
+    const menuCategories = [
+        { key: 'allDayBreakfast', data: menuData.menu.allDayBreakfast },
+        { key: 'soups', data: menuData.menu.soups },
+        { key: 'salads', data: menuData.menu.salads },
+        { key: 'garlicBreads', data: menuData.menu.garlicBreads },
+        { key: 'smallBites', data: menuData.menu.smallBites },
+        { key: 'pizzas', data: menuData.menu.pizzas },
+        { key: 'pasta', data: menuData.menu.pasta },
+        { key: 'sandwiches', data: menuData.menu.sandwiches },
+        { key: 'burgers', data: menuData.menu.burgers },
+        { key: 'bigPlates', data: menuData.menu.bigPlates }
+    ];
 
-  // Drinks section rendering
-  if (sectionType === "drinks") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#F6EBDA] via-white to-[#F4AE26] flex flex-col items-center justify-start"
-     >
-        <div className="w-full relative h-[350px] md:h-[500px] flex items-center justify-center mb-12"  >
-          <div
-            className="absolute inset-0 rounded-b-3xl flex flex-col items-center justify-center"
-            style={{
-              backgroundImage: "linear-gradient(rgba(44,21,5,0.7), rgba(244,174,38,0.3)), url('/svg/menu.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-[#F4AE26] drop-shadow-lg mb-4 tracking-wide">Drinks Menu</h1>
-            <div className="w-24 h-2 bg-[#2F2105] rounded-full mb-6"></div>
-            <p className="text-xl md:text-2xl font-semibold text-white max-w-2xl text-center px-4 drop-shadow">Explore our selection of hot, cold, and specialty beverages.</p>
-          </div>
-        </div>
-        <div className="rounded-xl p-12 w-full min-h-20 flex flex-col">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {drinksMenu.map((category) => (
-              <div key={category.category} className="bg-amber-50 rounded-lg shadow p-6 border border-amber-200 flex flex-col" data-aos="flip-left">
-                <h2 className="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-300 pb-1">
-                  {category.category}
-                </h2>
-                <div className="space-y-3">
-                  {category.items.map((item, idx) => (
-                    <div key={item.name + idx} className="border-b border-gray-100 pb-2">
-                      <div className="flex justify-between items-start">
-                        <div className="flex-1 pr-4">
-                          <h3 className="font-semibold text-gray-800 text-base leading-tight">
-                            {item.name}
-                          </h3>
-                          {item.description && (
-                            <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                              {item.description.length > 80
-                                ? `${item.description.substring(0, 80)}...`
-                                : item.description}
-                            </p>
-                          )}
-                        </div>
-                        <div className="text-right min-w-fit">
-                          {item.price && (
-                            <span className="font-bold text-amber-700 text-sm">₹{item.price}</span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+        <>
+            {/* Hero Section */}
+            <div className="flex flex-col justify-center relative items-center content-center w-screen h-[90%] overflow-hidden">
+                <h1 className="text-center text-6xl fontchange">Explore Our <span className="text-[#7E4300]">Menu</span></h1>
+                <Image 
+                    src="/svg/MenuHero.svg" 
+                    alt="Menu Image" 
+                    width={900} 
+                    height={800} 
+                    className="mx-auto mt-10 rounded-4xl"
+                />
 
-  // Desserts section rendering
-  if (sectionType === "desserts") {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-[#F6EBDA] via-white to-[#F4AE26] flex flex-col items-center justify-start">
-        <div className="w-full relative h-[350px] md:h-[500px] flex items-center justify-center mb-12">
-          <div
-            className="absolute inset-0 rounded-b-3xl flex flex-col items-center justify-center"
-            style={{
-              backgroundImage: "linear-gradient(rgba(44,21,5,0.7), rgba(244,174,38,0.3)), url('/svg/menu.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-[#F4AE26] drop-shadow-lg mb-4 tracking-wide">Desserts Menu</h1>
-            <div className="w-24 h-2 bg-[#2F2105] rounded-full mb-6"></div>
-            <p className="text-xl md:text-2xl font-semibold text-white max-w-2xl text-center px-4 drop-shadow">Indulge in our delicious dessert selection.</p>
-          </div>
-        </div>
-        <div className="rounded-xl p-12 w-full min-h-20 flex flex-col">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {dessertsMenu.map((category) => (
-              <div key={category.category} className="bg-amber-50 rounded-lg shadow p-6 border border-amber-200 flex flex-col" data-aos="flip-left">
-                <h2 className="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-300 pb-1">
-                  {category.category}
-                </h2>
-                <div className="space-y-3">
-                  {category.items.map((item, idx) => (
-                    <div key={item.name + idx} className="border-b border-gray-100 pb-2">
-                      <div className="flex justify-between items-start">
-                        <div className="flex-1 pr-4">
-                          <h3 className="font-semibold text-gray-800 text-base leading-tight">
-                            {item.name}
-                          </h3>
-                          {item.description && (
-                            <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                              {item.description.length > 80
-                                ? `${item.description.substring(0, 80)}...`
-                                : item.description}
-                            </p>
-                          )}
-                        </div>
-                        <div className="text-right min-w-fit">
-                          {item.price && (
-                            <span className="font-bold text-amber-700 text-sm">₹{item.price}</span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+                <Image 
+                    src={"/svg/Leaf.svg"}
+                    alt="Design Left"
+                    width={500}
+                    height={300}
+                    className="w-70 h-90 -top-20 rotate-130 -left-30 absolute rounded-4xl"
+                />
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F6EBDA] via-white to-[#F4AE26] flex flex-col items-center justify-start">
-      {/* Hero Section */}
-      <div className="w-full relative h-[350px] md:h-[500px] flex items-center justify-center mb-12" data-aos="fade-up">
-        <div
-          className="absolute inset-0 rounded-b-3xl flex flex-col items-center justify-center"
-          style={{
-            backgroundImage: "linear-gradient(rgba(44,21,5,0.7), rgba(244,174,38,0.3)), url('/svg/menu.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <h1 className="text-5xl md:text-7xl font-extrabold text-[#F4AE26] drop-shadow-lg mb-4 tracking-wide">Our Menu</h1>
-          <div className="w-24 h-2 bg-[#2F2105] rounded-full mb-6"></div>
-          <p className="text-xl md:text-2xl font-semibold text-white max-w-2xl text-center px-4 drop-shadow">Discover our European & Italian specialties, crafted for every taste.</p>
-        </div>
-      </div>
-      <div className="rounded-xl p-12 w-full min-h-20 flex flex-col">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {categories.map((category) => (
-            <div key={category.id} className="bg-amber-50 rounded-lg shadow p-6 border border-amber-200 flex flex-col" data-aos="flip-left">
-              <h2 className="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-300 pb-1">
-                {category.name}
-              </h2>
-              <p className="text-sm text-gray-600 italic mb-4">{category.description}</p>
-              <div className="space-y-3">
-                {category.items.map((item: any) => (
-                  <div key={item.id} className="border-b border-gray-100 pb-2">
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1 pr-4">
-                        <h3 className="font-semibold text-gray-800 text-base leading-tight">
-                          {item.name}
-                        </h3>
-                        <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                          {item.description.length > 80
-                            ? `${item.description.substring(0, 80)}...`
-                            : item.description}
-                        </p>
-                        {item.addOns && item.addOns.length > 0 && (
-                          <p className="text-xs text-amber-600 mt-1">
-                            Add-ons: {item.addOns.join(', ')}
-                          </p>
-                        )}
-                      </div>
-                      <div className="text-right min-w-fit">
-                        {item.price && (
-                          <span className="font-bold text-amber-700 text-sm">₹{item.price}</span>
-                        )}
-                        {item.priceWithChicken && (
-                          <div className="text-xs text-gray-600">₹{item.priceWithChicken}</div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                <Image 
+                    src={"/svg/Leaf.svg"}
+                    alt="Design Left"
+                    width={500}
+                    height={300}
+                    className="w-70 h-90 top-10 rotate-45 -right-30 absolute rounded-4xl"
+                />
+
+                <Image 
+                    src={"/svg/DesignL.svg"}
+                    alt="Design Left"
+                    width={500}
+                    height={300}
+                    className="w-70 h-90 top-70 left-0 absolute rounded-4xl"
+                />
+                <Image 
+                    src={"/svg/PinkLeaf.svg"}
+                    alt="Design Left"
+                    width={500}
+                    height={300}
+                    className="w-70 h-90 -top-10 left-220 absolute -z-1 rounded-4xl"
+                />
+
+                <Image 
+                    src={"/svg/PinkLeaf.svg"}
+                    alt="Design Left"
+                    width={500}
+                    height={300}
+                    className="w-70 h-90 top-60 left-45 absolute rotate-180 rotate-x-180 -z-1 rounded-4xl"
+                />
+
+                <button className="border py-3 px-5 rounded-4xl">scroll down</button>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+
+            {/* Menu Categories */}
+            <div className=" py-16">
+                <div className="max-w-4xl mx-auto px-6">
+                    {menuCategories.map((category, index) => {
+                        const isEven = index % 2 === 0;
+                        return (
+                            <div key={category.key} className={`relative mb-20 ${isEven ? 'ml-8' : 'mr-8'}`}>
+                                {/* Leaf decorations - alternating sides */}
+                                {isEven ? (
+                                    <Image 
+                                        src="/svg/PinkLeaf.svg"
+                                        alt="Leaf decoration"
+                                        width={150}
+                                        height={200}
+                                        className="absolute -right-20 top-10 w-32 h-40 opacity-80 rotate-12"
+                                    />
+                                ) : (
+                                    <Image 
+                                        src="/svg/Leaf.svg"
+                                        alt="Leaf decoration"
+                                        width={150}
+                                        height={200}
+                                        className="absolute -left-20 top-10 w-32 h-40 opacity-80 -rotate-12"
+                                    />
+                                )}
+
+                                {/* Menu Section without cards */}
+                                <div className="p-10">
+                                    {/* Category Title */}
+                                    <div className="text-center mb-8">
+                                        <h2 className="text-5xl font-bold text-black fontchange mb-2">
+                                            {category.data.title}
+                                        </h2>
+                                        <div className="w-24 h-1 bg-[#7E4300] mx-auto rounded-full"></div>
+                                    </div>
+                                    
+                                    {(category.data as any).description && (
+                                        <p className="text-center text-gray-600 mb-8 italic text-lg">
+                                            {(category.data as any).description}
+                                        </p>
+                                    )}
+                                    
+                                    {/* Menu Items */}
+                                    <div className="space-y-6">
+                                        {category.data.items?.map((item, itemIndex) => (
+                                            <div key={itemIndex} className="relative">
+                                                {/* Item row with dotted line */}
+                                                <div className="flex items-start justify-between">
+                                                    {/* Left side - Item name and description */}
+                                                    <div className="flex-1 pr-4">
+                                                        <h3 className="text-xl font-semibold text-black mb-1 leading-tight">
+                                                            {item.name.split(' ').map((word, i) => {
+                                                                const shouldHighlight = ['Classic', 'Ham', 'Sausage', 'Spaghetti', 'Scrambled', 'French', 'Avocado', 'Tuscan', 'Tomato', 'Cream', 'Mushroom', 'Caesar', 'Apple', 'Summer', 'Slaw', 'Chicken', 'Tikka', 'Cheesy', 'Peri', 'Mexican', 'Big', 'Daddy'].includes(word);
+                                                                return shouldHighlight ? (
+                                                                    <span key={i} className="text-[#7E4300]">{word} </span>
+                                                                ) : (
+                                                                    <span key={i}>{word} </span>
+                                                                );
+                                                            })}
+                                                        </h3>
+                                                        {(item as any).description && (
+                                                            <p className="text-sm text-gray-600 leading-relaxed mt-1">
+                                                                {(item as any).description}
+                                                            </p>
+                                                        )}
+                                                        {(item as any).addChicken && (
+                                                            <p className="text-xs text-[#7E4300] mt-1 font-medium">
+                                                                + Add Chicken Available
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                    
+                                                    {/* Dotted line */}
+                                                    <div className="flex-1 border-b-2 border-dotted border-[#7E4300] mb-2 mx-4"></div>
+                                                    
+                                                    {/* Right side - Price */}
+                                                    <div className="text-right">
+                                                        <span className="text-2xl font-bold text-black">
+                                                            ₹{item.price}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        </>
+    )
 }

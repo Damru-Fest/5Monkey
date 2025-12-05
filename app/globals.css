@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Redaction';
+    src: url('/Fonts/Redaction_10-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    background-color: #FFF2E6;
+}
+.fontchange{
+    font-family: 'Redaction', sans-serif;
+}
