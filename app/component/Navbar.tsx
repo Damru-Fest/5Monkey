@@ -7,13 +7,27 @@ export default function Navbar(){
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
     const [isMobileMenuDropdownOpen, setIsMobileMenuDropdownOpen] = useState(false);
+    const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
     const handleMenuHover = (isOpen: boolean) => {
-        setIsMenuDropdownOpen(isOpen);
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+            setHoverTimeout(null);
+        }
+
+        if (isOpen) {
+            setIsMenuDropdownOpen(true);
+        } else {
+            // Add a delay before hiding the dropdown
+            const timeout = setTimeout(() => {
+                setIsMenuDropdownOpen(false);
+            }, 200);
+            setHoverTimeout(timeout);
+        }
     };
 
     const toggleMobileMenuDropdown = () => {
@@ -21,6 +35,10 @@ export default function Navbar(){
     };
 
     const closeAllMenus = () => {
+        if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+            setHoverTimeout(null);
+        }
         setIsMobileMenuOpen(false);
         setIsMenuDropdownOpen(false);
         setIsMobileMenuDropdownOpen(false);
@@ -41,6 +59,7 @@ export default function Navbar(){
             <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
             <Link href="/#OurStory" className="hover:text-amber-600 transition-colors">Our Story</Link>
             
+            {/* Menu Dropdown */}
             <div 
                 className="relative"
                 onMouseEnter={() => handleMenuHover(true)}
@@ -58,7 +77,7 @@ export default function Navbar(){
                 
                 {/* Dropdown Menu */}
                 {isMenuDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                         <Link 
                             href="/menu/drinks" 
                             className="block px-4 py-2 text-gray-800 hover:bg-[#F6EBDA] hover:text-[#7E4300] transition-colors"
@@ -105,7 +124,7 @@ export default function Navbar(){
                 
                 {/* Dropdown Menu for Tablet */}
                 {isMenuDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    <div className="absolute top-full left-0 mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                         <Link 
                             href="/menu/drinks" 
                             className="block px-3 py-2 text-sm text-gray-800 hover:bg-[#F6EBDA] hover:text-[#7E4300] transition-colors"
