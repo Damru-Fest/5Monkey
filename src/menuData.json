@@ -499,5 +499,252 @@
         }
       ]
     }
+  },
+  "drinks": {
+    "coffee": {
+      "title": "Coffee",
+      "description": "Premium coffee blends and espresso-based beverages",
+      "items": [
+        {
+          "name": "Espresso",
+          "price": 90
+        },
+        {
+          "name": "Americano",
+          "price": 100
+        },
+        {
+          "name": "Affogato",
+          "price": 150
+        },
+        {
+          "name": "Classic Cappuccino",
+          "price": 150
+        },
+        {
+          "name": "Tonic Espresso",
+          "price": 175
+        },
+        {
+          "name": "Cortado",
+          "price": 150
+        },
+        {
+          "name": "Flat White",
+          "price": 150
+        },
+        {
+          "name": "Macchiato",
+          "price": 150
+        },
+        {
+          "name": "French Vanilla",
+          "price": 175
+        },
+        {
+          "name": "Mocha",
+          "price": 175
+        },
+        {
+          "name": "French Press",
+          "price": 200
+        }
+      ]
+    },
+    "coldCoffee": {
+      "title": "Cold Coffee",
+      "description": "Refreshing cold coffee beverages and frappes",
+      "items": [
+        {
+          "name": "Classic Cold Coffee",
+          "price": 220
+        },
+        {
+          "name": "Mocha Frappe",
+          "price": 220
+        },
+        {
+          "name": "Hazelnut Frappe",
+          "price": 220
+        },
+        {
+          "name": "Brownie Mocha Frappe",
+          "price": 240
+        }
+      ]
+    },
+    "tea": {
+      "title": "Tea",
+      "description": "Premium tea selection from around the world",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": 90
+        },
+        {
+          "name": "Earl Grey Tea",
+          "price": 100
+        },
+        {
+          "name": "Green Tea",
+          "price": 150
+        },
+        {
+          "name": "Blue Pea Tea",
+          "price": 150
+        },
+        {
+          "name": "Hibiscus Tea",
+          "price": 150
+        }
+      ]
+    },
+    "coldBeverages": {
+      "title": "Cold Beverages",
+      "description": "Refreshing drinks and sodas",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "price": 90
+        },
+        {
+          "name": "Ginger Ale",
+          "price": 90
+        },
+        {
+          "name": "Soda",
+          "price": 90
+        },
+        {
+          "name": "Fresh Lime Soda",
+          "price": 120
+        },
+        {
+          "name": "Red Bull",
+          "price": 160
+        },
+        {
+          "name": "Beetroot Lemonade",
+          "price": 180
+        },
+        {
+          "name": "Masala Lemonade",
+          "price": 180
+        },
+        {
+          "name": "Lemonana",
+          "price": 200
+        },
+        {
+          "name": "Mojito",
+          "price": 240
+        },
+        {
+          "name": "Green Apple Mojito",
+          "price": 240
+        },
+        {
+          "name": "Blue Ocean Mojito",
+          "price": 240
+        },
+        {
+          "name": "Watermelon & Basil",
+          "price": 240
+        }
+      ]
+    },
+    "somethingHot": {
+      "title": "Something Hot",
+      "description": "Warm and comforting hot beverages",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": 180
+        },
+        {
+          "name": "Vanilla Latte",
+          "price": 180
+        },
+        {
+          "name": "Hot Chocolate Bubblegum",
+          "price": 180
+        }
+      ]
+    },
+    "shakes": {
+      "title": "Shakes",
+      "description": "Creamy milkshakes and specialty drinks",
+      "items": [
+        {
+          "name": "Vanilla/Strawberry/Chocolate Shake",
+          "price": 180
+        },
+        {
+          "name": "Strawberry Banana Shake",
+          "price": 200
+        },
+        {
+          "name": "Classic Cold Chocolate",
+          "price": 220
+        },
+        {
+          "name": "Death By Chocolate",
+          "price": 220
+        },
+        {
+          "name": "Chocolate Banana",
+          "price": 220
+        },
+        {
+          "name": "Peanut Butter Shake",
+          "price": 240
+        },
+        {
+          "name": "Strawberry Bubblegum",
+          "price": 240
+        },
+        {
+          "name": "Mix Berry Oreo",
+          "price": 240
+        },
+        {
+          "name": "Kitkat Shake",
+          "price": 240
+        }
+      ]
+    }
+  },
+  "desserts": {
+    "desserts": {
+      "title": "Desserts",
+      "description": "Indulgent sweet treats and decadent desserts",
+      "items": [
+        {
+          "name": "Brownie Sizzle",
+          "price": 245,
+          "description": "Sizzling Hot Brownie Served With Vanilla Ice Cream And Chocolate Syrup. {Contains Eggs}"
+        },
+        {
+          "name": "Banoffe Pie",
+          "price": 275,
+          "description": "British Dessert Made With Thick Caramel Sauce, Bananas With Biscuit Base"
+        },
+        {
+          "name": "Chocolate Truffle",
+          "price": 275,
+          "description": "Classic Chocolate Truffle Cake"
+        },
+        {
+          "name": "Tre-Leches",
+          "price": 295,
+          "description": "Sponge Cake Soaked In Three Kinds Of Milk"
+        },
+        {
+          "name": "Waffel-icious",
+          "price": 275,
+          "description": "Choice of Vanilla/Choco Chip/Peanut Butter/Nutella Served With Vanilla Ice Cream"
+        }
+      ]
+    }
   }
 }

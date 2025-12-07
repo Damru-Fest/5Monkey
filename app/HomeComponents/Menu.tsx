@@ -13,7 +13,7 @@ export default function Menu(){
                 <h1 className="md:text-6xl text-3xl fontchange">Explore Our <span className="text-[#7E4300]">Menu</span></h1>
 
                 <div className="flex flex-row w-full h-full relative justify-center mt-20">
-                    <img src="./svg/cards.svg" alt=""
+                    <img src="./svg/cards1.svg" alt=""
                     className="w-200" />
                 </div>
 

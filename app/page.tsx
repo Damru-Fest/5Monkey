@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
-import { data } from "framer-motion/client";
+import { motion } from "framer-motion";
 import Hero from "./HomeComponents/Hero";
 import OurStory from "./HomeComponents/OurStory";
 import Menu from "./HomeComponents/Menu";
@@ -44,11 +44,40 @@ export default function Home() {
 
   return (
     <>
-    <Hero></Hero>
-    <OurStory></OurStory>
-    <Menu></Menu>
-    <Gallery></Gallery>
-
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <Hero></Hero>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <OurStory></OurStory>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <Menu></Menu>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
+        <Gallery></Gallery>
+      </motion.div>
+    </motion.div>
 
     
     </>
