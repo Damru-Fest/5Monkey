@@ -146,7 +146,7 @@ export default function Gallery() {
                     className="absolute -top-10 -left-30 w-70 h-90 -z-1 rotate-130 rounded-4xl"
                 />
                  <Image
-                    src="./svg/Stem.svg"
+                    src="/svg/Stem.svg"
                     alt="Design Leaf"
                     width={500}
                     height={300}
@@ -177,7 +177,7 @@ export default function Gallery() {
                     className="absolute top-100 w-70 h-90 -z-1 -right-40 rotate-300 rounded-4xl"
                 />
                  <Image
-                    src="./svg/Stem.svg"
+                    src="/svg/Stem.svg"
                     alt="Design Leaf"
                     width={500}
                     height={300}
