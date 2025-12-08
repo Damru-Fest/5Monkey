@@ -6,6 +6,7 @@ export default function Hero(){
     style={{
         backgroundImage: "url('/svg/homebg.svg')",
         backgroundSize: 'cover',
+        backgroundPosition: 'center 80px',
         backgroundRepeat: 'no-repeat',
     }}>
         <div className="flex flex-col w-full items-center content-center mt-30 lg:mt-0">
